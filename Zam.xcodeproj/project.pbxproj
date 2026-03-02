@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00767854113D4B5CF2196070 /* ForgeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757E330F9D59606269C7672A /* ForgeTheme.swift */; };
+		09031BAD98F5E7DC122F9502 /* EmbeddedModels in Resources */ = {isa = PBXBuildFile; fileRef = DE9C0B6965B37F4B49B0962C /* EmbeddedModels */; };
+		0D72EA7B060B4D8BE9F5E726 /* WorldModelEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988C1CF096720FCC463FFF3 /* WorldModelEngine.swift */; };
+		17A1D49F1C0A3E989F0DF8CC /* ZamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59864FBEF73D17CF99D4D0 /* ZamApp.swift */; };
+		2597A5EC76DDAD2F740E75B1 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F66F72027AE60C6E0F2E8452 /* Shaders.metal */; };
+		2B74F8F5A871A0404B110815 /* GamePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C99F9528BD183A1875C6 /* GamePageView.swift */; };
+		47A114805088753697774E4A /* FeedOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8464C7E7282BF75F7403C4B /* FeedOrchestrator.swift */; };
+		4F17B7D405CD670366E000B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 671EFEB5772D6EF137B3BC94 /* Assets.xcassets */; };
+		5D5BA8CAF6702F13F2554FB8 /* GameViewport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D611084687B6D0B481785 /* GameViewport.swift */; };
+		705D6B9FE6D2AB5785248788 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A38F0312DE5DE6038C6441 /* FeedViewModel.swift */; };
+		7335A7B7FBB6922B935D8017 /* LatentDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2ECD3F265699E9FF28E0D0 /* LatentDecoder.swift */; };
+		8600798584A515281FCB299C /* InitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2BFB94C2DD15D2BD91A4F /* InitState.swift */; };
+		8749445296F7CC28C1ECA590 /* ModelRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF634CDF648C0859018D538 /* ModelRegistry.swift */; };
+		8BE7A8BABF22CA0D09089C22 /* ModelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7D885EC5CDE18A19C2ED46 /* ModelConfig.swift */; };
+		A2B265C9363B4CD3488F467E /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EF4FBF4CC7D0F34E68854 /* MetalRenderer.swift */; };
+		A47914C81FADB00B8F2EFD8F /* PageOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = C609BC417E62E9243D407FC2 /* PageOverlays.swift */; };
+		A4A394C35F015E31A80617AD /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7428B2A95EEBB3616B3DCD99 /* PlayerView.swift */; };
+		A9DCFE71BF796BA604EC8BFB /* DiffusionSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865E9EF0863B3E3DE68E3585 /* DiffusionSampler.swift */; };
+		D0AB0955C2B4D413F9A356B6 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA12874086690EBF7A602DF /* FeedPageViewController.swift */; };
+		D2EB6FF3C8BFCFB26712B150 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA027811BB05DE88BBD65D7 /* ModelManager.swift */; };
+		ECE4C2370EBA15A18BF29075 /* GCSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DFC31FFDCCD40163DCD7C8 /* GCSClient.swift */; };
+		F6D864ED634D75AD6A6B830A /* CoreMLInference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B9EA181C1671FF4F95A83 /* CoreMLInference.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		01ECC9AD4A9B0028A28B0563 /* Zam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zam.entitlements; sourceTree = "<group>"; };
+		1B39EF010B023E52B250DDC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1E81BBB4BF5887A93642E65F /* Zam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA027811BB05DE88BBD65D7 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		266D611084687B6D0B481785 /* GameViewport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewport.swift; sourceTree = "<group>"; };
+		44A38F0312DE5DE6038C6441 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		671EFEB5772D6EF137B3BC94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6D59864FBEF73D17CF99D4D0 /* ZamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZamApp.swift; sourceTree = "<group>"; };
+		7428B2A95EEBB3616B3DCD99 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		757E330F9D59606269C7672A /* ForgeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgeTheme.swift; sourceTree = "<group>"; };
+		860B9EA181C1671FF4F95A83 /* CoreMLInference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLInference.swift; sourceTree = "<group>"; };
+		865E9EF0863B3E3DE68E3585 /* DiffusionSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffusionSampler.swift; sourceTree = "<group>"; };
+		97DFC31FFDCCD40163DCD7C8 /* GCSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCSClient.swift; sourceTree = "<group>"; };
+		9B2ECD3F265699E9FF28E0D0 /* LatentDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatentDecoder.swift; sourceTree = "<group>"; };
+		A5B3C99F9528BD183A1875C6 /* GamePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageView.swift; sourceTree = "<group>"; };
+		A65EF4FBF4CC7D0F34E68854 /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
+		AFA12874086690EBF7A602DF /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
+		B8464C7E7282BF75F7403C4B /* FeedOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrchestrator.swift; sourceTree = "<group>"; };
+		C609BC417E62E9243D407FC2 /* PageOverlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOverlays.swift; sourceTree = "<group>"; };
+		C988C1CF096720FCC463FFF3 /* WorldModelEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldModelEngine.swift; sourceTree = "<group>"; };
+		DAF634CDF648C0859018D538 /* ModelRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRegistry.swift; sourceTree = "<group>"; };
+		DE9C0B6965B37F4B49B0962C /* EmbeddedModels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = EmbeddedModels; path = Resources/EmbeddedModels; sourceTree = SOURCE_ROOT; };
+		EF7D885EC5CDE18A19C2ED46 /* ModelConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConfig.swift; sourceTree = "<group>"; };
+		F5F2BFB94C2DD15D2BD91A4F /* InitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitState.swift; sourceTree = "<group>"; };
+		F66F72027AE60C6E0F2E8452 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0E671A30DBB954D6E47CC6DE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				671EFEB5772D6EF137B3BC94 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		411295D067D6181586B3A9AA /* Zam */ = {
+			isa = PBXGroup;
+			children = (
+				1B39EF010B023E52B250DDC3 /* Info.plist */,
+				01ECC9AD4A9B0028A28B0563 /* Zam.entitlements */,
+				6D59864FBEF73D17CF99D4D0 /* ZamApp.swift */,
+			);
+			path = Zam;
+			sourceTree = "<group>";
+		};
+		6C8151C380E6D9D5078B993A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E81BBB4BF5887A93642E65F /* Zam.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75E6EAAD8A0289D193AF0146 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5F2BFB94C2DD15D2BD91A4F /* InitState.swift */,
+				EF7D885EC5CDE18A19C2ED46 /* ModelConfig.swift */,
+				DAF634CDF648C0859018D538 /* ModelRegistry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		81202C891D3DB83670746331 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7428B2A95EEBB3616B3DCD99 /* PlayerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A1F94719E9C90E9F5553BA18 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				757E330F9D59606269C7672A /* ForgeTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		B6F7088DF0043AE37BD26B41 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				266D611084687B6D0B481785 /* GameViewport.swift */,
+				A65EF4FBF4CC7D0F34E68854 /* MetalRenderer.swift */,
+				F66F72027AE60C6E0F2E8452 /* Shaders.metal */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		C74A7591463BE5F30B14C967 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E3EE2690F6ECCC704DBC3D92 /* Engine */,
+				75E6EAAD8A0289D193AF0146 /* Models */,
+				D702E56117FB4CBCA0C4E411 /* Networking */,
+				B6F7088DF0043AE37BD26B41 /* Rendering */,
+				A1F94719E9C90E9F5553BA18 /* Theme */,
+				81202C891D3DB83670746331 /* Views */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		D702E56117FB4CBCA0C4E411 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				97DFC31FFDCCD40163DCD7C8 /* GCSClient.swift */,
+				1EA027811BB05DE88BBD65D7 /* ModelManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E00CFB8DA47DEC3F174CC053 /* ZamFeed */ = {
+			isa = PBXGroup;
+			children = (
+				B8464C7E7282BF75F7403C4B /* FeedOrchestrator.swift */,
+				AFA12874086690EBF7A602DF /* FeedPageViewController.swift */,
+				44A38F0312DE5DE6038C6441 /* FeedViewModel.swift */,
+				A5B3C99F9528BD183A1875C6 /* GamePageView.swift */,
+				C609BC417E62E9243D407FC2 /* PageOverlays.swift */,
+			);
+			path = ZamFeed;
+			sourceTree = "<group>";
+		};
+		E3EE2690F6ECCC704DBC3D92 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				860B9EA181C1671FF4F95A83 /* CoreMLInference.swift */,
+				865E9EF0863B3E3DE68E3585 /* DiffusionSampler.swift */,
+				9B2ECD3F265699E9FF28E0D0 /* LatentDecoder.swift */,
+				C988C1CF096720FCC463FFF3 /* WorldModelEngine.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		E5628A99B91A97A6FA100177 = {
+			isa = PBXGroup;
+			children = (
+				0E671A30DBB954D6E47CC6DE /* Resources */,
+				C74A7591463BE5F30B14C967 /* Shared */,
+				411295D067D6181586B3A9AA /* Zam */,
+				E00CFB8DA47DEC3F174CC053 /* ZamFeed */,
+				DE9C0B6965B37F4B49B0962C /* EmbeddedModels */,
+				6C8151C380E6D9D5078B993A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A2C2B54B43BB9C3DCE392A5 /* Zam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03C3EB1E628E901CE85D0C8D /* Build configuration list for PBXNativeTarget "Zam" */;
+			buildPhases = (
+				B84E1EA484A022E090A7678B /* Sources */,
+				990F393D46512CE16F9EA410 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Zam;
+			packageProductDependencies = (
+			);
+			productName = Zam;
+			productReference = 1E81BBB4BF5887A93642E65F /* Zam.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DDD2288C0A8493C4830171F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1540;
+			};
+			buildConfigurationList = E7650302D67AA60F453E22B6 /* Build configuration list for PBXProject "Zam" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = E5628A99B91A97A6FA100177;
+			minimizedProjectReferenceProxies = 1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A2C2B54B43BB9C3DCE392A5 /* Zam */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		990F393D46512CE16F9EA410 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F17B7D405CD670366E000B8 /* Assets.xcassets in Resources */,
+				09031BAD98F5E7DC122F9502 /* EmbeddedModels in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B84E1EA484A022E090A7678B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6D864ED634D75AD6A6B830A /* CoreMLInference.swift in Sources */,
+				A9DCFE71BF796BA604EC8BFB /* DiffusionSampler.swift in Sources */,
+				47A114805088753697774E4A /* FeedOrchestrator.swift in Sources */,
+				D0AB0955C2B4D413F9A356B6 /* FeedPageViewController.swift in Sources */,
+				705D6B9FE6D2AB5785248788 /* FeedViewModel.swift in Sources */,
+				00767854113D4B5CF2196070 /* ForgeTheme.swift in Sources */,
+				ECE4C2370EBA15A18BF29075 /* GCSClient.swift in Sources */,
+				2B74F8F5A871A0404B110815 /* GamePageView.swift in Sources */,
+				5D5BA8CAF6702F13F2554FB8 /* GameViewport.swift in Sources */,
+				8600798584A515281FCB299C /* InitState.swift in Sources */,
+				7335A7B7FBB6922B935D8017 /* LatentDecoder.swift in Sources */,
+				A2B265C9363B4CD3488F467E /* MetalRenderer.swift in Sources */,
+				8BE7A8BABF22CA0D09089C22 /* ModelConfig.swift in Sources */,
+				D2EB6FF3C8BFCFB26712B150 /* ModelManager.swift in Sources */,
+				8749445296F7CC28C1ECA590 /* ModelRegistry.swift in Sources */,
+				A47914C81FADB00B8F2EFD8F /* PageOverlays.swift in Sources */,
+				A4A394C35F015E31A80617AD /* PlayerView.swift in Sources */,
+				2597A5EC76DDAD2F740E75B1 /* Shaders.metal in Sources */,
+				0D72EA7B060B4D8BE9F5E726 /* WorldModelEngine.swift in Sources */,
+				17A1D49F1C0A3E989F0DF8CC /* ZamApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		16F0EB2CB1B6E37F50A1EBBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4D54E2BAA7F3194F07B6A3C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		665F5D753BB1C58025BD937A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Zam/Zam.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = BNU89VU6JB;
+				INFOPLIST_FILE = Zam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				METAL_LIBRARY_FILE_BASE = default;
+				PRODUCT_BUNDLE_IDENTIFIER = gg.alakazam.zam;
+				PRODUCT_NAME = Zam;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9D504E12CDA5B6A7073FA3D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Zam/Zam.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = BNU89VU6JB;
+				INFOPLIST_FILE = Zam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				METAL_LIBRARY_FILE_BASE = default;
+				PRODUCT_BUNDLE_IDENTIFIER = gg.alakazam.zam;
+				PRODUCT_NAME = Zam;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03C3EB1E628E901CE85D0C8D /* Build configuration list for PBXNativeTarget "Zam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				665F5D753BB1C58025BD937A /* Debug */,
+				9D504E12CDA5B6A7073FA3D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E7650302D67AA60F453E22B6 /* Build configuration list for PBXProject "Zam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D54E2BAA7F3194F07B6A3C4 /* Debug */,
+				16F0EB2CB1B6E37F50A1EBBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DDD2288C0A8493C4830171F9 /* Project object */;
+}
