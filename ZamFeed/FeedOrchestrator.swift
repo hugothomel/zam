@@ -9,6 +9,7 @@ final class FeedOrchestrator {
     static let feedModelIds: [String] = [
         "tube_runner",               // embedded latent model, loads instantly
         "flappy_bird",               // embedded pixel-space model
+        "jurassic",                  // embedded latent model, 3 actions
     ]
 
     /// One view model per page, created upfront.

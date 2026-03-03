@@ -14,6 +14,7 @@ enum ModelRegistry {
     private static let anamnesisActions = ["NOOP", "FORWARD", "BACKWARD", "TURN_LEFT", "TURN_RIGHT", "ATTACK"]
     private static let mercuryActions = ["NOOP", "FORWARD", "BACKWARD", "LEFT", "RIGHT", "ATTACK"]
     private static let knightfallActions = ["NOOP", "FORWARD", "BACKWARD", "LEFT", "RIGHT", "ATTACK", "HOLD"]
+    private static let jurassicActions = ["NOOP", "LEFT", "RIGHT"]
     private static let tubeActions = ["NOOP", "HOLD"]
     private static let spaceActions = ["NOOP", "FORWARD", "LEFT", "RIGHT", "SHOOT"]
 
@@ -193,6 +194,20 @@ enum ModelRegistry {
             gameId: "knightfall"
         ),
 
+        // --- Jurassic ---
+        ModelConfig(
+            id: "jurassic",
+            name: "Jurassic",
+            description: "Jurassic (latent, 1-step consistency, decoder to 256x256)",
+            C: 4, H: 64, W: 64, T: 4,
+            isLatent: true, isFP16: false,
+            numActions: 3, actionNames: jurassicActions, defaultAction: 0,
+            denoiser: DenoiserConfig(numSteps: 1, sigmaMin: 0.002, sigmaMax: 5.0),
+            decoder: DecoderConfig(outputH: 256, outputW: 256, latentScaleMin: -8.824, latentScaleMax: 9.229),
+            paths: ModelPaths(denoiser: "\(gcsBase)/jurassic/denoiser.mlmodelc", decoder: "\(gcsBase)/jurassic/decoder.mlmodelc", initState: "\(gcsBase)/jurassic/init_state.json"),
+            gameId: "jurassic"
+        ),
+
         // --- Tube Runner (Mercury Flow HD 512) ---
         ModelConfig(
             id: "tube_runner",
@@ -263,6 +278,7 @@ enum ModelRegistry {
         GameDefinition(id: "knightfall", name: "Knightfall", description: "Medieval combat", variants: ["knightfall_002"]),
         GameDefinition(id: "tube_runner", name: "Tube Runner", description: "Endless runner", variants: ["tube_runner", "tube_runner_fp16"]),
         GameDefinition(id: "space_shooter", name: "Space Shooter", description: "Arcade shooter", variants: ["space_shooter", "space_shooter_gcs"]),
+        GameDefinition(id: "jurassic", name: "Jurassic", description: "Dinosaur world", variants: ["jurassic"]),
     ]
 
     static func config(for id: String) -> ModelConfig? {
