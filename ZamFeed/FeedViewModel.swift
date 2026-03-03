@@ -40,6 +40,8 @@ final class FeedViewModel: Identifiable {
 
     // Game loop task
     private var gameLoopTask: Task<Void, Never>?
+    // In-flight load task — cancelled on unload()
+    private var loadTask: Task<Void, Never>?
 
     // Stored init state for reset
     private var initStateData: Data?
@@ -53,6 +55,7 @@ final class FeedViewModel: Identifiable {
     // MARK: - Lifecycle
 
     /// Download model, build engine + viewport. Transitions: unloaded/loadFailed → loading → paused.
+    /// Heavy work (MLModel loading, engine init, initial frame) runs off MainActor to avoid freezing.
     func load() {
         guard state == .unloaded || state != .loading else { return }
         if case .loadFailed = state {} else if state != .unloaded { return }
@@ -61,12 +64,12 @@ final class FeedViewModel: Identifiable {
         downloadProgress = 0
         print("[FeedVM:\(modelId)] Loading...")
 
-        Task { @MainActor in
-            // Observe download progress
+        loadTask = Task {
+            // Observe download progress on MainActor
             let progressTask = Task { @MainActor in
                 while !Task.isCancelled {
-                    if case .downloading(let p) = modelManager.state {
-                        downloadProgress = p
+                    if case .downloading(let p) = self.modelManager.state {
+                        self.downloadProgress = p
                     }
                     try? await Task.sleep(for: .milliseconds(100))
                 }
@@ -76,38 +79,46 @@ final class FeedViewModel: Identifiable {
             progressTask.cancel()
             print("[FeedVM:\(modelId)] ModelManager state: \(modelManager.state)")
 
+            guard !Task.isCancelled else { return }
+
             guard case .ready(let denoiserURL, let decoderURL, let initStateData) = modelManager.state else {
                 if case .error(let msg) = modelManager.state {
                     print("[FeedVM:\(modelId)] Load failed: \(msg)")
-                    state = .loadFailed(msg)
+                    await MainActor.run { state = .loadFailed(msg) }
                 } else {
                     print("[FeedVM:\(modelId)] Load failed: unknown")
-                    state = .loadFailed("Unknown error")
+                    await MainActor.run { state = .loadFailed("Unknown error") }
                 }
                 return
             }
 
             do {
                 print("[FeedVM:\(modelId)] Engine starting — denoiser: \(denoiserURL.lastPathComponent), decoder: \(decoderURL?.lastPathComponent ?? "none")")
-                self.initStateData = initStateData
+
+                // Heavy work OFF MainActor: load MLModels, init engine, decode first frame
                 let engine = WorldModelEngine(config: config)
                 try engine.load(denoiserURL: denoiserURL, decoderURL: decoderURL)
                 try engine.reset(initStateData: initStateData)
-                self.engine = engine
+                let initialFrame = try engine.currentFrame()
 
-                let viewport = GameViewportController()
-                self.viewportController = viewport
+                guard !Task.isCancelled else { return }
 
-                // Render initial frame
-                if let frame = try? engine.currentFrame() {
-                    viewport.displayFrame(data: frame, c: config.outputC, h: config.outputH, w: config.outputW)
+                // Hop to MainActor: create viewport (MTKView), assign state
+                await MainActor.run {
+                    self.initStateData = initStateData
+                    self.engine = engine
+
+                    let viewport = GameViewportController()
+                    self.viewportController = viewport
+                    viewport.displayFrame(data: initialFrame, c: config.outputC, h: config.outputH, w: config.outputW)
+
+                    print("[FeedVM:\(modelId)] Ready — paused")
+                    state = .paused
                 }
-
-                print("[FeedVM:\(modelId)] Ready — paused")
-                state = .paused
             } catch {
+                guard !Task.isCancelled else { return }
                 print("[FeedVM:\(modelId)] Engine error: \(error)")
-                state = .loadFailed(error.localizedDescription)
+                await MainActor.run { state = .loadFailed(error.localizedDescription) }
             }
         }
     }
@@ -145,6 +156,8 @@ final class FeedViewModel: Identifiable {
 
     /// Release engine + viewport to free memory. Transition: any → unloaded.
     func unload() {
+        loadTask?.cancel()
+        loadTask = nil
         gameLoopTask?.cancel()
         gameLoopTask = nil
         engine = nil

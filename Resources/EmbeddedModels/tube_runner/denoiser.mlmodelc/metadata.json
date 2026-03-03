@@ -1,0 +1,117 @@
+[
+  {
+    "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float16",
+    "outputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 64 × 64)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 64, 64]",
+        "name" : "denoised",
+        "type" : "MultiArray"
+      }
+    ],
+    "modelParameters" : [
+
+    ],
+    "specificationVersion" : 8,
+    "mlProgramOperationTypeHistogram" : {
+      "Ios17.cos" : 1,
+      "Ios17.square" : 57,
+      "UpsampleNearestNeighbor" : 3,
+      "Ios17.reshape" : 142,
+      "Identity" : 1,
+      "Ios17.inverse" : 2,
+      "Ios16.reduceMean" : 114,
+      "Ios17.matmul" : 24,
+      "Ios17.sin" : 1,
+      "Ios17.transpose" : 24,
+      "Split" : 56,
+      "Ios16.softmax" : 12,
+      "Ios17.expandDims" : 89,
+      "Ios17.add" : 183,
+      "Ios17.gather" : 1,
+      "Ios17.log" : 1,
+      "Ios17.batchNorm" : 13,
+      "Ios16.silu" : 46,
+      "Ios17.sqrt" : 59,
+      "Ios17.conv" : 91,
+      "Ios17.sub" : 57,
+      "Ios17.pow" : 1,
+      "Ios17.linear" : 47,
+      "Ios17.concat" : 14,
+      "Ios17.cast" : 1,
+      "Ios17.realDiv" : 57,
+      "Ios17.clip" : 1,
+      "Ios17.mul" : 64
+    },
+    "computePrecision" : "Mixed (Float16, Float32, Int16, Int32)",
+    "isUpdatable" : "0",
+    "stateSchema" : [
+
+    ],
+    "availability" : {
+      "macOS" : "14.0",
+      "tvOS" : "17.0",
+      "visionOS" : "1.0",
+      "watchOS" : "10.0",
+      "iOS" : "17.0",
+      "macCatalyst" : "17.0"
+    },
+    "modelType" : {
+      "name" : "MLModelType_mlProgram"
+    },
+    "userDefinedMetadata" : {
+      "com.github.apple.coremltools.source_dialect" : "TorchScript",
+      "com.github.apple.coremltools.source" : "torch==2.2.2",
+      "com.github.apple.coremltools.version" : "7.2"
+    },
+    "inputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 4 × 64 × 64)",
+        "shortDescription" : "",
+        "shape" : "[1, 4, 64, 64]",
+        "name" : "noisy_next_obs",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1)",
+        "shortDescription" : "",
+        "shape" : "[1]",
+        "name" : "sigma",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 16 × 64 × 64)",
+        "shortDescription" : "",
+        "shape" : "[1, 16, 64, 64]",
+        "name" : "prev_obs",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32 1 × 4)",
+        "shortDescription" : "",
+        "shape" : "[1, 4]",
+        "name" : "prev_act",
+        "type" : "MultiArray"
+      }
+    ],
+    "generatedClassName" : "denoiser",
+    "method" : "predict"
+  }
+]

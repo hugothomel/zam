@@ -49,8 +49,10 @@ final class FeedOrchestrator {
     /// - ±1 adjacent: preloaded (paused)
     /// - ±2+ distant: unloaded
     func updateLifecycles() {
+        let pageCount = pages.count
         for (i, page) in pages.enumerated() {
-            let distance = abs(i - currentIndex)
+            let linearDist = abs(i - currentIndex)
+            let distance = min(linearDist, pageCount - linearDist)
 
             switch distance {
             case 0:
