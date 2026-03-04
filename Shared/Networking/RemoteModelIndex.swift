@@ -1,18 +1,23 @@
 import Foundation
 
-/// Fetches and caches the remote CoreML model index from GCS.
-/// Uses on-device URL signing via GCSURLSigner (no server needed).
+/// Fetches and caches the remote CoreML model index from the signer API.
+/// The signer returns pre-signed GCS URLs so the app needs no credentials.
 actor RemoteModelIndex {
     static let shared = RemoteModelIndex()
 
-    private let indexPath = "coreml/index.json"
+    private let signerURL = URL(string: "https://onnx-signer-294479657775.us-west1.run.app/?action=coreml_index")!
     private let cacheKey = "RemoteModelIndex_cache"
 
     /// Fetch remote index, returning parsed ModelConfigs.
     /// Falls back to cached data if the network request fails.
     func fetch() async -> [ModelConfig] {
         do {
-            let data = try await GCSURLSigner.shared.fetchData(path: indexPath)
+            let (data, response) = try await URLSession.shared.data(from: signerURL)
+            guard let http = response as? HTTPURLResponse,
+                  (200...299).contains(http.statusCode) else {
+                print("[RemoteModelIndex] HTTP \((response as? HTTPURLResponse)?.statusCode ?? -1)")
+                return loadCached()
+            }
             UserDefaults.standard.set(data, forKey: cacheKey)
             return parse(data)
         } catch {
@@ -64,6 +69,7 @@ private struct RemoteModelEntry: Decodable {
     }
 
     func toModelConfig() -> ModelConfig {
+        // Paths are pre-signed absolute URLs from the signer API
         let decoderConfig: DecoderConfig? = if let d = decoder {
             DecoderConfig(
                 outputH: d.outputH,

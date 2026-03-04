@@ -146,15 +146,6 @@ final class ModelManager {
 
     // MARK: - Download & Compile
 
-    /// Resolve a path to a download URL — signs relative GCS paths, passes through absolute URLs.
-    private func resolveURL(_ path: String) async -> URL? {
-        if let url = URL(string: path), url.scheme != nil {
-            return url // Already absolute (e.g. https://...)
-        }
-        // Relative GCS path — sign it
-        return await GCSURLSigner.shared.signedURL(for: path)
-    }
-
     private func downloadAndCompile(_ config: ModelConfig) async throws {
         let dir = modelCacheDir(config)
         try fileManager.createDirectory(at: dir, withIntermediateDirectories: true)
@@ -163,7 +154,7 @@ final class ModelManager {
         let isZip = config.paths.denoiser.contains(".zip")
 
         // Download denoiser
-        guard let denoiserURL = await resolveURL(config.paths.denoiser) else {
+        guard let denoiserURL = URL(string: config.paths.denoiser) else {
             throw GCSError.invalidURL(config.paths.denoiser)
         }
 
@@ -175,7 +166,7 @@ final class ModelManager {
         // Download decoder if needed
         var decoderDownloadURL: URL?
         if let decoderPath = config.paths.decoder,
-           let decoderURL = await resolveURL(decoderPath) {
+           let decoderURL = URL(string: decoderPath) {
             let decoderDest = dir.appendingPathComponent(isZip ? "decoder.zip" : "decoder_raw.mlmodelc")
             _ = try await gcsClient.download(from: decoderURL, to: decoderDest) { _ in }
             decoderDownloadURL = decoderDest
@@ -183,7 +174,7 @@ final class ModelManager {
         }
 
         // Download init_state.json
-        guard let initStateURL = await resolveURL(config.paths.initState) else {
+        guard let initStateURL = URL(string: config.paths.initState) else {
             throw GCSError.invalidURL(config.paths.initState)
         }
         let initStateData = try await gcsClient.fetchJSON(from: initStateURL)

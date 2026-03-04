@@ -19,9 +19,7 @@
 		4F17B7D405CD670366E000B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 671EFEB5772D6EF137B3BC94 /* Assets.xcassets */; };
 		5D5BA8CAF6702F13F2554FB8 /* GameViewport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D611084687B6D0B481785 /* GameViewport.swift */; };
 		705D6B9FE6D2AB5785248788 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A38F0312DE5DE6038C6441 /* FeedViewModel.swift */; };
-		731450748E6B72E513DA147D /* GCSURLSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AD90207C8FEDF17505739C /* GCSURLSigner.swift */; };
 		7335A7B7FBB6922B935D8017 /* LatentDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2ECD3F265699E9FF28E0D0 /* LatentDecoder.swift */; };
-		7DAA8FF5A21FC8B4EF9901B6 /* gcs-credentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 5439607B997E2E8441D940CD /* gcs-credentials.json */; };
 		8600798584A515281FCB299C /* InitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2BFB94C2DD15D2BD91A4F /* InitState.swift */; };
 		8749445296F7CC28C1ECA590 /* ModelRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF634CDF648C0859018D538 /* ModelRegistry.swift */; };
 		8BE7A8BABF22CA0D09089C22 /* ModelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7D885EC5CDE18A19C2ED46 /* ModelConfig.swift */; };
@@ -45,8 +43,6 @@
 		1EA027811BB05DE88BBD65D7 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		266D611084687B6D0B481785 /* GameViewport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewport.swift; sourceTree = "<group>"; };
 		44A38F0312DE5DE6038C6441 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
-		5439607B997E2E8441D940CD /* gcs-credentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "gcs-credentials.json"; sourceTree = "<group>"; };
-		62AD90207C8FEDF17505739C /* GCSURLSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCSURLSigner.swift; sourceTree = "<group>"; };
 		671EFEB5772D6EF137B3BC94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D59864FBEF73D17CF99D4D0 /* ZamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZamApp.swift; sourceTree = "<group>"; };
 		7428B2A95EEBB3616B3DCD99 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -156,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				97DFC31FFDCCD40163DCD7C8 /* GCSClient.swift */,
-				62AD90207C8FEDF17505739C /* GCSURLSigner.swift */,
 				1EA027811BB05DE88BBD65D7 /* ModelManager.swift */,
 				781F3F8AA46FAA6A265A38BB /* RemoteModelIndex.swift */,
 				9CFEE17FC08D2029B5B89EFC /* ZipExtractor.swift */,
@@ -167,7 +162,6 @@
 		D9B64B32D906C6DC8662DF0E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5439607B997E2E8441D940CD /* gcs-credentials.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -263,7 +257,6 @@
 			files = (
 				4F17B7D405CD670366E000B8 /* Assets.xcassets in Resources */,
 				09031BAD98F5E7DC122F9502 /* EmbeddedModels in Resources */,
-				7DAA8FF5A21FC8B4EF9901B6 /* gcs-credentials.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +275,6 @@
 				705D6B9FE6D2AB5785248788 /* FeedViewModel.swift in Sources */,
 				00767854113D4B5CF2196070 /* ForgeTheme.swift in Sources */,
 				ECE4C2370EBA15A18BF29075 /* GCSClient.swift in Sources */,
-				731450748E6B72E513DA147D /* GCSURLSigner.swift in Sources */,
 				2B74F8F5A871A0404B110815 /* GamePageView.swift in Sources */,
 				5D5BA8CAF6702F13F2554FB8 /* GameViewport.swift in Sources */,
 				EC8B213659E7941F56968A81 /* GridBackgroundView.swift in Sources */,

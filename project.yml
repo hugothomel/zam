@@ -28,8 +28,6 @@ targets:
       - path: Resources/EmbeddedModels
         buildPhase: resources
         type: folder
-      - path: Shared/Resources/gcs-credentials.json
-        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: gg.alakazam.zam
