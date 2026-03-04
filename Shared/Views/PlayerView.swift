@@ -70,30 +70,12 @@ struct PlayerView: View {
 
     private var hudBar: some View {
         HStack {
-            Text(engine.config.name)
-                .font(ForgeTheme.hudFont)
-                .foregroundStyle(ForgeTheme.dimWhite)
-
-            Spacer()
-
             Text("\(Int(engine.fps)) FPS")
                 .font(ForgeTheme.hudFont)
                 .foregroundStyle(engine.fps > 10 ? ForgeTheme.green : ForgeTheme.red)
+                .shadow(color: .black.opacity(0.6), radius: 3)
 
-            Text("S:\(engine.stepCount)")
-                .font(ForgeTheme.hudFont)
-                .foregroundStyle(ForgeTheme.dimWhite)
-                .padding(.leading, 8)
-
-            Button(action: onReset) {
-                Text("RST")
-                    .font(ForgeTheme.hudFont)
-                    .foregroundStyle(ForgeTheme.orange)
-                    .padding(.horizontal, 6)
-                    .padding(.vertical, 2)
-                    .border(ForgeTheme.orange.opacity(0.5), width: 1)
-            }
-            .padding(.leading, 8)
+            Spacer()
         }
     }
 }

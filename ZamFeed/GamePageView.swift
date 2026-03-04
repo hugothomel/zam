@@ -2,6 +2,7 @@ import SwiftUI
 
 /// Full-screen page for a single game in the feed.
 /// Switches between loading, error, and playing states.
+/// No overlay here — FeedOverlayView is layered on top in ZamApp so it stays fixed during swipes.
 struct GamePageView: View {
     let viewModel: FeedViewModel
     let pageIndex: Int
@@ -46,9 +47,6 @@ struct GamePageView: View {
             case .loadFailed(let message):
                 errorOverlay(message: message)
             }
-
-            // Page indicator
-            pageIndicator
 
             // Swipe hint on first page
             if pageIndex == 0 && viewModel.state == .playing {
@@ -125,26 +123,6 @@ struct GamePageView: View {
                     .padding(.horizontal, 24)
                     .padding(.vertical, 10)
                     .border(ForgeTheme.cyan, width: ForgeTheme.borderWidth)
-            }
-        }
-    }
-
-    // MARK: - Page Indicator
-
-    private var pageIndicator: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                VStack(spacing: 4) {
-                    ForEach(0..<totalPages, id: \.self) { i in
-                        Circle()
-                            .fill(i == pageIndex ? ForgeTheme.cyan : ForgeTheme.dimWhite.opacity(0.3))
-                            .frame(width: 6, height: 6)
-                    }
-                }
-                .padding(.trailing, 12)
-                .padding(.bottom, 40)
             }
         }
     }
