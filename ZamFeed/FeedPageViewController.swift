@@ -56,6 +56,9 @@ struct FeedPageView: UIViewControllerRepresentable {
         }
 
         func viewController(at index: Int) -> UIViewController {
+            guard index >= 0 && index < orchestrator.pageCount else {
+                return hostingControllers[0] ?? UIViewController()
+            }
             if let existing = hostingControllers[index] {
                 return existing
             }

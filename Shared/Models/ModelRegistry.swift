@@ -1,11 +1,17 @@
 import Foundation
 
-enum ModelRegistry {
+final class ModelRegistry: @unchecked Sendable {
+    static let shared = ModelRegistry()
+
     // MARK: - GCS base URL
     static let gcsBase = "https://storage.googleapis.com/alakazam-models/coreml"
 
     // MARK: - Embedded demo model ID
     static let embeddedModelId = "tube_runner"
+
+    // MARK: - Dynamic models from remote index
+    private var dynamicModels: [String: ModelConfig] = [:]
+    private var dynamicGames: [GameDefinition] = []
 
     // MARK: - Action name sets
     private static let embeddedDemoActions = ["NOOP", "LEFT", "RIGHT"]
@@ -281,7 +287,62 @@ enum ModelRegistry {
         GameDefinition(id: "jurassic", name: "Jurassic", description: "Dinosaur world", variants: ["jurassic"]),
     ]
 
+    // MARK: - Config lookup (dynamic first, then static)
+
     static func config(for id: String) -> ModelConfig? {
-        allModels[id]
+        shared.dynamicModels[id] ?? allModels[id]
+    }
+
+    // MARK: - All games including dynamic
+
+    static var allGames: [GameDefinition] {
+        var seen = Set(games.map(\.id))
+        var result = games
+        for game in shared.dynamicGames where !seen.contains(game.id) {
+            result.append(game)
+            seen.insert(game.id)
+        }
+        return result
+    }
+
+    // MARK: - Merge remote models
+
+    /// Merge remote model configs into the registry.
+    /// Skips models that already exist in the static registry.
+    /// Returns IDs of newly added models.
+    @discardableResult
+    static func mergeRemoteModels(_ configs: [ModelConfig]) -> [String] {
+        var added: [String] = []
+        var gameVariants: [String: [String]] = [:]
+
+        for config in configs {
+            guard allModels[config.id] == nil else { continue }
+            guard shared.dynamicModels[config.id] == nil else { continue }
+
+            shared.dynamicModels[config.id] = config
+            added.append(config.id)
+            gameVariants[config.gameId, default: []].append(config.id)
+        }
+
+        for (gameId, variantIds) in gameVariants {
+            let existsStatic = games.contains { $0.id == gameId }
+            let existsDynamic = shared.dynamicGames.contains { $0.id == gameId }
+
+            if !existsStatic && !existsDynamic {
+                if let first = variantIds.first, let config = shared.dynamicModels[first] {
+                    shared.dynamicGames.append(GameDefinition(
+                        id: gameId,
+                        name: config.name,
+                        description: config.description,
+                        variants: variantIds
+                    ))
+                }
+            }
+        }
+
+        if !added.isEmpty {
+            print("[ModelRegistry] Merged \(added.count) remote models: \(added)")
+        }
+        return added
     }
 }

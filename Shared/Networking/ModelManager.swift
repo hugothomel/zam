@@ -17,6 +17,9 @@ final class ModelManager {
     private let gcsClient = GCSClient()
     private let fileManager = FileManager.default
 
+    /// Maximum total cache size before LRU eviction kicks in (2 GB).
+    private let maxCacheBytes: UInt64 = 2_000_000_000
+
     /// Cache directory for downloaded and compiled models.
     private var cacheDir: URL {
         let base = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first!
@@ -143,34 +146,44 @@ final class ModelManager {
 
     // MARK: - Download & Compile
 
+    /// Resolve a path to a download URL — signs relative GCS paths, passes through absolute URLs.
+    private func resolveURL(_ path: String) async -> URL? {
+        if let url = URL(string: path), url.scheme != nil {
+            return url // Already absolute (e.g. https://...)
+        }
+        // Relative GCS path — sign it
+        return await GCSURLSigner.shared.signedURL(for: path)
+    }
+
     private func downloadAndCompile(_ config: ModelConfig) async throws {
         let dir = modelCacheDir(config)
         try fileManager.createDirectory(at: dir, withIntermediateDirectories: true)
 
         let hasDecoder = config.decoder != nil
+        let isZip = config.paths.denoiser.contains(".zip")
 
         // Download denoiser
-        guard let denoiserURL = URL(string: config.paths.denoiser) else {
+        guard let denoiserURL = await resolveURL(config.paths.denoiser) else {
             throw GCSError.invalidURL(config.paths.denoiser)
         }
 
         state = .downloading(progress: 0)
-        let denoiserDest = dir.appendingPathComponent("denoiser_raw.mlmodelc")
+        let denoiserDest = dir.appendingPathComponent(isZip ? "denoiser.zip" : "denoiser_raw.mlmodelc")
         _ = try await gcsClient.download(from: denoiserURL, to: denoiserDest) { _ in }
         state = .downloading(progress: hasDecoder ? 0.33 : 0.5)
 
         // Download decoder if needed
-        var decoderCompiledURL: URL?
+        var decoderDownloadURL: URL?
         if let decoderPath = config.paths.decoder,
-           let decoderURL = URL(string: decoderPath) {
-            let decoderDest = dir.appendingPathComponent("decoder_raw.mlmodelc")
+           let decoderURL = await resolveURL(decoderPath) {
+            let decoderDest = dir.appendingPathComponent(isZip ? "decoder.zip" : "decoder_raw.mlmodelc")
             _ = try await gcsClient.download(from: decoderURL, to: decoderDest) { _ in }
-            decoderCompiledURL = decoderDest
+            decoderDownloadURL = decoderDest
             state = .downloading(progress: 0.66)
         }
 
         // Download init_state.json
-        guard let initStateURL = URL(string: config.paths.initState) else {
+        guard let initStateURL = await resolveURL(config.paths.initState) else {
             throw GCSError.invalidURL(config.paths.initState)
         }
         let initStateData = try await gcsClient.fetchJSON(from: initStateURL)
@@ -178,17 +191,45 @@ final class ModelManager {
         try initStateData.write(to: initStateDest)
         state = .downloading(progress: 1.0)
 
-        // Compile models
+        // Extract or compile models
         state = .compiling
 
-        let compiledDenoiserURL = try await compileModel(at: denoiserDest, to: dir.appendingPathComponent("denoiser.mlmodelc"))
-
+        let compiledDenoiserURL: URL
         var compiledDecoderURL: URL?
-        if let rawDecoder = decoderCompiledURL {
-            compiledDecoderURL = try await compileModel(at: rawDecoder, to: dir.appendingPathComponent("decoder.mlmodelc"))
+
+        if isZip {
+            // Pre-compiled .mlmodelc in zip — just unzip
+            compiledDenoiserURL = try unzipModel(at: denoiserDest, expectedName: "denoiser.mlmodelc", in: dir)
+            if let decoderZip = decoderDownloadURL {
+                compiledDecoderURL = try unzipModel(at: decoderZip, expectedName: "decoder.mlmodelc", in: dir)
+            }
+        } else {
+            compiledDenoiserURL = try await compileModel(at: denoiserDest, to: dir.appendingPathComponent("denoiser.mlmodelc"))
+            if let rawDecoder = decoderDownloadURL {
+                compiledDecoderURL = try await compileModel(at: rawDecoder, to: dir.appendingPathComponent("decoder.mlmodelc"))
+            }
         }
 
         state = .ready(denoiserURL: compiledDenoiserURL, decoderURL: compiledDecoderURL, initStateData: initStateData)
+
+        evictIfNeeded(keeping: config.id)
+    }
+
+    /// Unzip a downloaded .mlmodelc.zip to extract the .mlmodelc directory.
+    private func unzipModel(at zipURL: URL, expectedName: String, in dir: URL) throws -> URL {
+        let destination = dir.appendingPathComponent(expectedName)
+        if fileManager.fileExists(atPath: destination.path) {
+            try fileManager.removeItem(at: destination)
+        }
+
+        try ZipExtractor.extract(zipURL: zipURL, to: dir)
+
+        guard fileManager.fileExists(atPath: destination.path) else {
+            throw GCSError.httpError(-1)
+        }
+
+        try? fileManager.removeItem(at: zipURL)
+        return destination
     }
 
     /// Compile an mlpackage/mlmodel to mlmodelc.
@@ -219,5 +260,64 @@ final class ModelManager {
         try? fileManager.removeItem(at: source)
 
         return destination
+    }
+
+    // MARK: - LRU Cache Eviction
+
+    /// Evict oldest cached models when total cache exceeds `maxCacheBytes`.
+    private func evictIfNeeded(keeping currentId: String) {
+        guard fileManager.fileExists(atPath: cacheDir.path) else { return }
+
+        guard let entries = try? fileManager.contentsOfDirectory(
+            at: cacheDir,
+            includingPropertiesForKeys: [.contentModificationDateKey, .isDirectoryKey],
+            options: .skipsHiddenFiles
+        ) else { return }
+
+        struct CacheEntry {
+            let url: URL
+            let name: String
+            let size: UInt64
+            let modified: Date
+        }
+
+        var items: [CacheEntry] = []
+        var totalSize: UInt64 = 0
+
+        for entry in entries {
+            guard let values = try? entry.resourceValues(forKeys: [.isDirectoryKey, .contentModificationDateKey]),
+                  values.isDirectory == true else { continue }
+
+            let size = directorySize(entry)
+            let modified = values.contentModificationDate ?? .distantPast
+            items.append(CacheEntry(url: entry, name: entry.lastPathComponent, size: size, modified: modified))
+            totalSize += size
+        }
+
+        guard totalSize > maxCacheBytes else { return }
+
+        // Sort oldest first
+        items.sort { $0.modified < $1.modified }
+
+        for item in items {
+            guard totalSize > maxCacheBytes else { break }
+            // Never evict the model we just loaded or embedded model caches
+            if item.name == currentId || item.name.hasPrefix("embedded_") { continue }
+
+            print("[ModelManager] Evicting \(item.name) (\(item.size / 1_000_000) MB)")
+            try? fileManager.removeItem(at: item.url)
+            totalSize -= item.size
+        }
+    }
+
+    private func directorySize(_ url: URL) -> UInt64 {
+        guard let enumerator = fileManager.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey]) else { return 0 }
+        var total: UInt64 = 0
+        for case let file as URL in enumerator {
+            if let size = try? file.resourceValues(forKeys: [.fileSizeKey]).fileSize {
+                total += UInt64(size)
+            }
+        }
+        return total
     }
 }

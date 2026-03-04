@@ -12,14 +12,28 @@ final class FeedOrchestrator {
         "jurassic",                  // embedded latent model, 3 actions
     ]
 
-    /// One view model per page, created upfront.
-    let pages: [FeedViewModel]
+    /// One view model per page. Starts with embedded models, remote models appended later.
+    private(set) var pages: [FeedViewModel]
 
     /// Index of the currently visible page.
     private(set) var currentIndex: Int = 0
 
     init() {
         self.pages = Self.feedModelIds.map { FeedViewModel(modelId: $0) }
+    }
+
+    /// Append remote models to the feed. Filters out any model IDs already present.
+    func appendRemoteModels(_ modelIds: [String]) {
+        let existing = Set(pages.map(\.modelId))
+        let newIds = modelIds.filter { !existing.contains($0) }
+        guard !newIds.isEmpty else { return }
+
+        let newPages = newIds.map { FeedViewModel(modelId: $0) }
+        pages.append(contentsOf: newPages)
+        print("[FeedOrchestrator] Appended \(newPages.count) remote pages, total: \(pages.count)")
+
+        // Preload adjacent if new pages are now within window
+        updateLifecycles()
     }
 
     var currentPage: FeedViewModel {
@@ -63,8 +77,8 @@ final class FeedOrchestrator {
                     // Auto-play is triggered by observing state transition to .paused
                     observeAutoPlay(page)
                 case .loading:
-                    // Already loading, auto-play will trigger when ready
-                    break
+                    // Started loading as adjacent page — set up auto-play now
+                    observeAutoPlay(page)
                 case .paused:
                     page.play()
                 case .playing:

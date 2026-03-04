@@ -28,6 +28,15 @@ struct ZamApp: App {
             }
             .preferredColorScheme(.dark)
             .statusBarHidden()
+            .task {
+                let configs = await RemoteModelIndex.shared.fetch()
+                if !configs.isEmpty {
+                    let added = ModelRegistry.mergeRemoteModels(configs)
+                    if !added.isEmpty {
+                        orchestrator.appendRemoteModels(added)
+                    }
+                }
+            }
             .onChange(of: orchestrator.currentPage.state) { _, newState in
                 guard showingSplash else { return }
                 if newState == .paused || newState == .playing {
