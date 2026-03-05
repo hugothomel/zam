@@ -6,6 +6,8 @@ struct FeedOverlayView: View {
     let gameName: String
     let modelDescription: String
     let onReset: () -> Void
+    var onRemix: (() -> Void)?
+    var onProfile: (() -> Void)?
 
     var body: some View {
         ZStack {
@@ -24,10 +26,15 @@ struct FeedOverlayView: View {
                     gameInfo
                         .padding(.horizontal, 16)
                         .padding(.bottom, 12)
-                    bottomBar
                 }
             }
             .allowsHitTesting(false)
+
+            // Bottom bar (interactive — remix + profile are tappable)
+            VStack {
+                Spacer()
+                bottomBar
+            }
 
             // Interactive reset button (top-right)
             VStack {
@@ -89,21 +96,31 @@ struct FeedOverlayView: View {
             .shadow(color: .black.opacity(0.6), radius: 4, y: 2)
             Spacer()
         }
+        .padding(.bottom, 60) // space for bottom bar
     }
 
     // MARK: - Bottom Bar
 
     private var bottomBar: some View {
         HStack {
-            barItem(icon: "house.fill", label: "Home", isActive: true)
+            barButton(icon: "house.fill", label: "Home", isActive: true)
             Spacer()
-            barItem(icon: "heart.fill", label: "Like")
+            barButton(icon: "heart.fill", label: "Like")
             Spacer()
             remixButton
             Spacer()
-            barItem(icon: "bookmark.fill", label: "Save")
+            barButton(icon: "bookmark.fill", label: "Save")
             Spacer()
-            barItem(icon: "arrowshape.turn.up.right.fill", label: "Share")
+            Button { onProfile?() } label: {
+                VStack(spacing: 2) {
+                    Image(systemName: "person.circle")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.white.opacity(0.5))
+                    Text("Profile")
+                        .font(.system(size: 10))
+                        .foregroundStyle(.white.opacity(0.5))
+                }
+            }
         }
         .padding(.horizontal, 24)
         .padding(.top, 10)
@@ -118,7 +135,7 @@ struct FeedOverlayView: View {
         )
     }
 
-    private func barItem(icon: String, label: String, isActive: Bool = false) -> some View {
+    private func barButton(icon: String, label: String, isActive: Bool = false) -> some View {
         VStack(spacing: 2) {
             Image(systemName: icon)
                 .font(.system(size: 20))
@@ -131,14 +148,16 @@ struct FeedOverlayView: View {
     }
 
     private var remixButton: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(ForgeTheme.cyan)
-                .frame(width: 44, height: 30)
+        Button { onRemix?() } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(ForgeTheme.cyan)
+                    .frame(width: 44, height: 30)
 
-            Image(systemName: "arrow.triangle.2.circlepath")
-                .font(.system(size: 16, weight: .bold))
-                .foregroundStyle(.black)
+                Image(systemName: "arrow.triangle.2.circlepath")
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundStyle(.black)
+            }
         }
     }
 }

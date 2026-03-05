@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,17 +17,24 @@
 		3DC80703474DD2D24E0F1918 /* FeedOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9213356E0A139FF129785863 /* FeedOverlayView.swift */; };
 		47A114805088753697774E4A /* FeedOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8464C7E7282BF75F7403C4B /* FeedOrchestrator.swift */; };
 		4F17B7D405CD670366E000B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 671EFEB5772D6EF137B3BC94 /* Assets.xcassets */; };
+		54743B7EDA20AA2084A18BB8 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 31F1CB4B90A7AAD4359FAFE9 /* Supabase */; };
+		57B8D768FFC4861FB978AE96 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AEA4994AED7773BFB3C3D5 /* LoginView.swift */; };
 		5D5BA8CAF6702F13F2554FB8 /* GameViewport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266D611084687B6D0B481785 /* GameViewport.swift */; };
+		6A55698AD65B68F25C85ABD9 /* ForgeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D937BDEF150DE789FDF479A /* ForgeAPIClient.swift */; };
 		705D6B9FE6D2AB5785248788 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A38F0312DE5DE6038C6441 /* FeedViewModel.swift */; };
 		7335A7B7FBB6922B935D8017 /* LatentDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2ECD3F265699E9FF28E0D0 /* LatentDecoder.swift */; };
+		84466F82340F88668CAA04C3 /* WorldSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9474AA9AB6FA802D3DDE6ACA /* WorldSetupView.swift */; };
 		8600798584A515281FCB299C /* InitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2BFB94C2DD15D2BD91A4F /* InitState.swift */; };
 		8749445296F7CC28C1ECA590 /* ModelRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF634CDF648C0859018D538 /* ModelRegistry.swift */; };
 		8BE7A8BABF22CA0D09089C22 /* ModelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7D885EC5CDE18A19C2ED46 /* ModelConfig.swift */; };
 		91EC184FDFB150AB78C28271 /* RemoteModelIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781F3F8AA46FAA6A265A38BB /* RemoteModelIndex.swift */; };
 		A2B265C9363B4CD3488F467E /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EF4FBF4CC7D0F34E68854 /* MetalRenderer.swift */; };
+		A2E6532B0BE8D5C2047051BF /* ForgeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8324DFC7E32327B316C06D /* ForgeModels.swift */; };
 		A47914C81FADB00B8F2EFD8F /* PageOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = C609BC417E62E9243D407FC2 /* PageOverlays.swift */; };
 		A4A394C35F015E31A80617AD /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7428B2A95EEBB3616B3DCD99 /* PlayerView.swift */; };
+		A562090A24277A0874B59A63 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB21B897AD1584EE1E86C53 /* ProfileView.swift */; };
 		A9DCFE71BF796BA604EC8BFB /* DiffusionSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865E9EF0863B3E3DE68E3585 /* DiffusionSampler.swift */; };
+		CECCF60FA03A4C302C5D97AA /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD90192EF8E97079892EB90 /* AuthManager.swift */; };
 		D0AB0955C2B4D413F9A356B6 /* FeedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA12874086690EBF7A602DF /* FeedPageViewController.swift */; };
 		D2EB6FF3C8BFCFB26712B150 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA027811BB05DE88BBD65D7 /* ModelManager.swift */; };
 		EC8B213659E7941F56968A81 /* GridBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398FE6619539DB24041490A /* GridBackgroundView.swift */; };
@@ -39,19 +46,23 @@
 /* Begin PBXFileReference section */
 		01ECC9AD4A9B0028A28B0563 /* Zam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zam.entitlements; sourceTree = "<group>"; };
 		1B39EF010B023E52B250DDC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		1E81BBB4BF5887A93642E65F /* Zam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E81BBB4BF5887A93642E65F /* Zam.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Zam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA027811BB05DE88BBD65D7 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		266D611084687B6D0B481785 /* GameViewport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewport.swift; sourceTree = "<group>"; };
+		3FB21B897AD1584EE1E86C53 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		44A38F0312DE5DE6038C6441 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		4DD90192EF8E97079892EB90 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		671EFEB5772D6EF137B3BC94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D59864FBEF73D17CF99D4D0 /* ZamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZamApp.swift; sourceTree = "<group>"; };
 		7428B2A95EEBB3616B3DCD99 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		757E330F9D59606269C7672A /* ForgeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgeTheme.swift; sourceTree = "<group>"; };
 		781F3F8AA46FAA6A265A38BB /* RemoteModelIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteModelIndex.swift; sourceTree = "<group>"; };
+		7D937BDEF150DE789FDF479A /* ForgeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgeAPIClient.swift; sourceTree = "<group>"; };
 		860B9EA181C1671FF4F95A83 /* CoreMLInference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLInference.swift; sourceTree = "<group>"; };
 		865E9EF0863B3E3DE68E3585 /* DiffusionSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffusionSampler.swift; sourceTree = "<group>"; };
 		9213356E0A139FF129785863 /* FeedOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOverlayView.swift; sourceTree = "<group>"; };
 		9398FE6619539DB24041490A /* GridBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBackgroundView.swift; sourceTree = "<group>"; };
+		9474AA9AB6FA802D3DDE6ACA /* WorldSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldSetupView.swift; sourceTree = "<group>"; };
 		97DFC31FFDCCD40163DCD7C8 /* GCSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCSClient.swift; sourceTree = "<group>"; };
 		9B2ECD3F265699E9FF28E0D0 /* LatentDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatentDecoder.swift; sourceTree = "<group>"; };
 		9CFEE17FC08D2029B5B89EFC /* ZipExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipExtractor.swift; sourceTree = "<group>"; };
@@ -60,14 +71,27 @@
 		AB6C97F74F45E30D60C4972B /* ZamSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZamSplashView.swift; sourceTree = "<group>"; };
 		AFA12874086690EBF7A602DF /* FeedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageViewController.swift; sourceTree = "<group>"; };
 		B8464C7E7282BF75F7403C4B /* FeedOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrchestrator.swift; sourceTree = "<group>"; };
+		BD8324DFC7E32327B316C06D /* ForgeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgeModels.swift; sourceTree = "<group>"; };
 		C609BC417E62E9243D407FC2 /* PageOverlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOverlays.swift; sourceTree = "<group>"; };
 		C988C1CF096720FCC463FFF3 /* WorldModelEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldModelEngine.swift; sourceTree = "<group>"; };
 		DAF634CDF648C0859018D538 /* ModelRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRegistry.swift; sourceTree = "<group>"; };
 		DE9C0B6965B37F4B49B0962C /* EmbeddedModels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = EmbeddedModels; path = Resources/EmbeddedModels; sourceTree = SOURCE_ROOT; };
+		E8AEA4994AED7773BFB3C3D5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EF7D885EC5CDE18A19C2ED46 /* ModelConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConfig.swift; sourceTree = "<group>"; };
 		F5F2BFB94C2DD15D2BD91A4F /* InitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitState.swift; sourceTree = "<group>"; };
 		F66F72027AE60C6E0F2E8452 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D716A3EE45A2961DC798D02E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54743B7EDA20AA2084A18BB8 /* Supabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0E671A30DBB954D6E47CC6DE /* Resources */ = {
@@ -76,6 +100,15 @@
 				671EFEB5772D6EF137B3BC94 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		1E74DC96529CED0C5C829F6C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4DD90192EF8E97079892EB90 /* AuthManager.swift */,
+				E8AEA4994AED7773BFB3C3D5 /* LoginView.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		411295D067D6181586B3A9AA /* Zam */ = {
@@ -99,6 +132,7 @@
 		75E6EAAD8A0289D193AF0146 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BD8324DFC7E32327B316C06D /* ForgeModels.swift */,
 				F5F2BFB94C2DD15D2BD91A4F /* InitState.swift */,
 				EF7D885EC5CDE18A19C2ED46 /* ModelConfig.swift */,
 				DAF634CDF648C0859018D538 /* ModelRegistry.swift */,
@@ -111,6 +145,8 @@
 			children = (
 				9398FE6619539DB24041490A /* GridBackgroundView.swift */,
 				7428B2A95EEBB3616B3DCD99 /* PlayerView.swift */,
+				3FB21B897AD1584EE1E86C53 /* ProfileView.swift */,
+				9474AA9AB6FA802D3DDE6ACA /* WorldSetupView.swift */,
 				AB6C97F74F45E30D60C4972B /* ZamSplashView.swift */,
 			);
 			path = Views;
@@ -137,6 +173,7 @@
 		C74A7591463BE5F30B14C967 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1E74DC96529CED0C5C829F6C /* Auth */,
 				E3EE2690F6ECCC704DBC3D92 /* Engine */,
 				75E6EAAD8A0289D193AF0146 /* Models */,
 				D702E56117FB4CBCA0C4E411 /* Networking */,
@@ -151,6 +188,7 @@
 		D702E56117FB4CBCA0C4E411 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				7D937BDEF150DE789FDF479A /* ForgeAPIClient.swift */,
 				97DFC31FFDCCD40163DCD7C8 /* GCSClient.swift */,
 				1EA027811BB05DE88BBD65D7 /* ModelManager.swift */,
 				781F3F8AA46FAA6A265A38BB /* RemoteModelIndex.swift */,
@@ -211,6 +249,7 @@
 			buildPhases = (
 				B84E1EA484A022E090A7678B /* Sources */,
 				990F393D46512CE16F9EA410 /* Resources */,
+				D716A3EE45A2961DC798D02E /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,6 +257,7 @@
 			);
 			name = Zam;
 			packageProductDependencies = (
+				31F1CB4B90A7AAD4359FAFE9 /* Supabase */,
 			);
 			productName = Zam;
 			productReference = 1E81BBB4BF5887A93642E65F /* Zam.app */;
@@ -231,6 +271,12 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					2A2C2B54B43BB9C3DCE392A5 = {
+						DevelopmentTeam = BNU89VU6JB;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = E7650302D67AA60F453E22B6 /* Build configuration list for PBXProject "Zam" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -242,6 +288,10 @@
 			);
 			mainGroup = E5628A99B91A97A6FA100177;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3C84FCF4C19F8AECC80CCF8B /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -267,12 +317,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECCF60FA03A4C302C5D97AA /* AuthManager.swift in Sources */,
 				F6D864ED634D75AD6A6B830A /* CoreMLInference.swift in Sources */,
 				A9DCFE71BF796BA604EC8BFB /* DiffusionSampler.swift in Sources */,
 				47A114805088753697774E4A /* FeedOrchestrator.swift in Sources */,
 				3DC80703474DD2D24E0F1918 /* FeedOverlayView.swift in Sources */,
 				D0AB0955C2B4D413F9A356B6 /* FeedPageViewController.swift in Sources */,
 				705D6B9FE6D2AB5785248788 /* FeedViewModel.swift in Sources */,
+				6A55698AD65B68F25C85ABD9 /* ForgeAPIClient.swift in Sources */,
+				A2E6532B0BE8D5C2047051BF /* ForgeModels.swift in Sources */,
 				00767854113D4B5CF2196070 /* ForgeTheme.swift in Sources */,
 				ECE4C2370EBA15A18BF29075 /* GCSClient.swift in Sources */,
 				2B74F8F5A871A0404B110815 /* GamePageView.swift in Sources */,
@@ -280,15 +333,18 @@
 				EC8B213659E7941F56968A81 /* GridBackgroundView.swift in Sources */,
 				8600798584A515281FCB299C /* InitState.swift in Sources */,
 				7335A7B7FBB6922B935D8017 /* LatentDecoder.swift in Sources */,
+				57B8D768FFC4861FB978AE96 /* LoginView.swift in Sources */,
 				A2B265C9363B4CD3488F467E /* MetalRenderer.swift in Sources */,
 				8BE7A8BABF22CA0D09089C22 /* ModelConfig.swift in Sources */,
 				D2EB6FF3C8BFCFB26712B150 /* ModelManager.swift in Sources */,
 				8749445296F7CC28C1ECA590 /* ModelRegistry.swift in Sources */,
 				A47914C81FADB00B8F2EFD8F /* PageOverlays.swift in Sources */,
 				A4A394C35F015E31A80617AD /* PlayerView.swift in Sources */,
+				A562090A24277A0874B59A63 /* ProfileView.swift in Sources */,
 				91EC184FDFB150AB78C28271 /* RemoteModelIndex.swift in Sources */,
 				2597A5EC76DDAD2F740E75B1 /* Shaders.metal in Sources */,
 				0D72EA7B060B4D8BE9F5E726 /* WorldModelEngine.swift in Sources */,
+				84466F82340F88668CAA04C3 /* WorldSetupView.swift in Sources */,
 				17A1D49F1C0A3E989F0DF8CC /* ZamApp.swift in Sources */,
 				0C279CF4165FC391EA9423D6 /* ZamSplashView.swift in Sources */,
 				FFB9CB4452E832FE3B0CA4C2 /* ZipExtractor.swift in Sources */,
@@ -427,6 +483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Zam/Zam.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BNU89VU6JB;
 				INFOPLIST_FILE = Zam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -447,6 +504,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Zam/Zam.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BNU89VU6JB;
 				INFOPLIST_FILE = Zam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -483,6 +541,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3C84FCF4C19F8AECC80CCF8B /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		31F1CB4B90A7AAD4359FAFE9 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C84FCF4C19F8AECC80CCF8B /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DDD2288C0A8493C4830171F9 /* Project object */;
 }

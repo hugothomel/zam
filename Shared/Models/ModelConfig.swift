@@ -96,4 +96,13 @@ struct GameDefinition: Identifiable, Sendable {
     let name: String
     let description: String
     let variants: [String]  // model IDs
+    let sourceGraphId: String?  // Supabase graph UUID for fork_graph RPC
+
+    init(id: String, name: String, description: String, variants: [String], sourceGraphId: String? = nil) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.variants = variants
+        self.sourceGraphId = sourceGraphId
+    }
 }

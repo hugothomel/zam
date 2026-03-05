@@ -280,10 +280,10 @@ final class ModelRegistry: @unchecked Sendable {
             "anamnesis", "anamnesis_latent", "anamnesis_small", "anamnesis_tiny",
             "anamnesis_consistency", "anamnesis_small_distill"
         ]),
-        GameDefinition(id: "mercury_flow", name: "Mercury Flow", description: "Action combat", variants: ["mercury_flow_consistency", "mercury_flow_consistency_fp16"]),
-        GameDefinition(id: "knightfall", name: "Knightfall", description: "Medieval combat", variants: ["knightfall_002"]),
-        GameDefinition(id: "tube_runner", name: "Tube Runner", description: "Endless runner", variants: ["tube_runner", "tube_runner_fp16"]),
-        GameDefinition(id: "space_shooter", name: "Space Shooter", description: "Arcade shooter", variants: ["space_shooter", "space_shooter_gcs"]),
+        GameDefinition(id: "mercury_flow", name: "Mercury Flow", description: "Action combat", variants: ["mercury_flow_consistency", "mercury_flow_consistency_fp16"], sourceGraphId: "5ffe010d-5737-4b2b-9553-2b978b63aa46"),
+        GameDefinition(id: "knightfall", name: "Knightfall", description: "Medieval combat", variants: ["knightfall_002"], sourceGraphId: "d604ed03-6f95-4469-90f6-2984013ca396"),
+        GameDefinition(id: "tube_runner", name: "Tube Runner", description: "Endless runner", variants: ["tube_runner", "tube_runner_fp16"], sourceGraphId: "5ffe010d-5737-4b2b-9553-2b978b63aa46"),
+        GameDefinition(id: "space_shooter", name: "Space Shooter", description: "Arcade shooter", variants: ["space_shooter", "space_shooter_gcs"], sourceGraphId: "e66424dd-7e9d-43de-86f6-e2daff444b03"),
         GameDefinition(id: "jurassic", name: "Jurassic", description: "Dinosaur world", variants: ["jurassic"]),
     ]
 
